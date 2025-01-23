@@ -1,4 +1,4 @@
-# EQ-Net: Elastic Quantization Neural Networks
+# CMC: Compound Memory-Computing Architecture
 
 The code for CMC: Compound Memory-Computing Architecture  for Energy-Efficient Convolutional Neural Network Accelerators.
 
