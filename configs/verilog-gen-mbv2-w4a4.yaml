@@ -1,0 +1,46 @@
+ModelType: super
+ARCH: mobilenet_v2
+Resume: None
+super_model: .\mobilenet_v2_wq_w4a4.pt
+
+OUT_DIR: ../verilog
+RNG_SEED: 2
+GPUS:
+  - 0
+  - 1
+
+wlist: [899, 142, 156, 145, 110, 132, 136, 162, 0, 168, 162, 209, 176, 296, 184, 479]
+
+
+DATASET:
+  data_set: imagenet
+  data_path: \home\name\dataset\ImageNet\
+  train_batch_size: 256
+  eval_batch_size: 256
+
+
+SEARCH_SPACE:
+  channel_wise_list:
+    - False
+  w_sym_list:
+    - True
+  a_sym_list:
+    - True
+  w_bit_list:
+    - 4
+  a_bit_list:
+    - 4
+
+
+quantizer: lsq
+levels: 2
+w_bit: 4
+a_bit: 4
+
+act_quant: True
+disable_8bit_head_stem: True
+num_samples: 256
+num_subnet: 3
+
+
+# python verilog_gen.py --cfg ../configs/verilog-gen-mbv2-w4a4.yaml
